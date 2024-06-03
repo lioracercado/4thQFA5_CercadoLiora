@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Generator</title>
+</head>
+<body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        #output {
+            margin-top: 20px;
+            white-space: pre;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    
+    <h1>Shape Generator!</h1>
+    <label for="userInput">Enter a number:</label>
+    <input type="text" id="userInput" name="userInput">
+    <button onclick="GS()">Generate Shape</button>
+    <p id="output"></p>
+
+    <script>
+        function GS() {
+            var uinput = document.getElementById("userInput").value;
+
+            while (isNaN(uinput) || uinput === '') {
+                alert("Invalid input. Please enter a numerical value only.");
+                uinput = prompt("Enter a number:");
+            }
+
+            var num = parseInt(uinput);
+            var outputElement = document.getElementById("output");
+            outputElement.innerHTML = "Number inputted: " + num + "<br>";
+
+            if (num % 2 === 0) { 
+                for (var a = num; a > 0; a--) {
+                    var row = " ";
+                    for (var b = a; b > 0; b--) {
+                        row += a + " ";
+                    }
+                    outputElement.innerHTML += row + "<br>";
+                }
+            } else { 
+                for (var a = num; a > 0; a--) {
+                    var row = "";
+                    for (var b = num; b > 0; b--) {
+                        row += a + " ";
+                    }
+                    outputElement.innerHTML += row + "<br>";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
